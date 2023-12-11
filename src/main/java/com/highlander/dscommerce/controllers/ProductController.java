@@ -1,9 +1,10 @@
 package com.highlander.dscommerce.controllers;
 
-import com.highlander.dscommerce.entities.Product;
-import com.highlander.dscommerce.repositories.ProductRepository;
+import com.highlander.dscommerce.dto.ProductDTO;
+import com.highlander.dscommerce.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,11 +15,11 @@ import java.util.Optional;
 public class ProductController {
 
     @Autowired
-    private ProductRepository repository;
-    @GetMapping
-    public String teste() {
-        Optional<Product> result = repository.findById(1L);
-        Product product = result.get();
-        return product.getName();
+    private ProductService service;
+
+    @GetMapping(value = "/{id}")
+    public ProductDTO findById(@PathVariable Long id) {
+        ProductDTO dto = service.findById(id);
+        return dto;
     }
 }
