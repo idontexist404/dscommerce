@@ -1,11 +1,23 @@
 package com.highlander.dscommerce.dto;
 
 import com.highlander.dscommerce.entities.Product;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 public class ProductDTO {
+
     private Long id;
+
+    @Size(min = 3, max = 80, message = "Field size: 3-80 characters long")
+    @NotBlank(message = "Required field")
     private String name;
+
+    @Size(min = 10, message = "The description must be at least 10 characters long")
+    @NotBlank(message = "Required field")
     private String description;
+
+    @Positive(message = "The price must be positive")
     private Double price;
     private String imgUrl;
 
