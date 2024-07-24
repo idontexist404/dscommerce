@@ -1,6 +1,5 @@
 package com.highlander.dscommerce.controllers;
 
-
 import com.highlander.dscommerce.dto.ProductDTO;
 import com.highlander.dscommerce.dto.ProductMinDTO;
 import com.highlander.dscommerce.services.ProductService;
